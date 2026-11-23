@@ -6,6 +6,7 @@
 <meta name="description" content="Bab 1 · Eksplorasi Gerak. Jelajahi jalan, lari, lompat, loncat; melempar dan menangkap; menendang dan menghentikan bola; serta gerak di air dengan aman.">
 <style>:root{color-scheme:light}html,body{margin:0}body{font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
 <title>Bab 1 Eksplorasi Gerak · Kelas 5</title>
+
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Nunito:wght@600;800;900&display=swap">
 <style>
 /* Tata letak: pita kepala (kanvas) -> tab bagian -> satu panel per bagian; kartu berbingkai tinta tebal ala kartun cel. Warna utama bisa diganti lewat DATA.tema */
@@ -200,6 +201,12 @@ html.pid .toples{min-height:320px}
 .baris.diseret{opacity:.85;transform:scale(1.02);box-shadow:6px 8px 0 rgba(0,0,0,.35);z-index:2;position:relative}
 .pasang{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px}.ps-kolom h3{font-size:20px;color:var(--tosca);margin:0 0 6px}
 .ps-isi{display:grid;gap:8px}
+.set-soal{margin:0 0 8px;font-size:15px;font-weight:700;color:var(--redup,inherit)}
+.bs-isi{display:grid;gap:8px}.bs-baris{display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:center;border:4px solid var(--garis);border-radius:14px;background:var(--kertas);color:var(--teks);padding:10px 12px;font-weight:800;box-shadow:3px 4px 0 var(--garis)}
+.bs-baris .nomor{font-family:var(--display);font-size:20px;width:34px;height:34px;border-radius:10px;display:grid;place-items:center;background:var(--kuning);color:#2B1A3F}
+.bs-baris.oke{border-color:#19B894;box-shadow:3px 4px 0 #19B894}.bs-baris.bug{border-color:#FF4F64;box-shadow:3px 4px 0 #FF4F64}.bs-tombol{display:flex;gap:6px}.bs-tombol .tombol{padding:8px 14px;font-size:15px}
+.bs-alasan{grid-column:2/-1;font-weight:600;font-size:15px;color:#C0263B}
+@media (max-width:720px){.bs-baris{grid-template-columns:auto 1fr}.bs-tombol{grid-column:1/-1}}
 .ps-kartu{display:flex;gap:10px;align-items:center;text-align:left;border:4px solid var(--garis);border-radius:14px;background:var(--kertas);color:var(--teks);padding:10px 12px;font-weight:800;box-shadow:3px 4px 0 var(--garis);touch-action:none;user-select:none;-webkit-user-select:none;min-height:52px}
 .ps-kartu i{flex:none;font-style:normal;font-family:var(--display);color:#fff;width:30px;height:30px;border-radius:9px;display:grid;place-items:center}
 .ps-kartu.sasaran{background:#E6FFF6}.ps-kartu.oke{background:#C8F5E5;color:#14382D}.ps-kartu.bug{background:#FFD3D9;color:#4A1420}
@@ -441,14 +448,11 @@ window.DATA = {
 
   ketMain: "Murid maju ke layar PID. Seret atau ketuk jawaban, lalu tekan Periksa.",
   permainan: [
-    { jenis: "pasang", n: "Gerak dan Cirinya", k: "Lokomotor", judulKiri: "Gerak", judulKanan: "Cirinya",
-      pasangan: [["Jalan", "Selalu ada satu kaki menapak"], ["Lari", "Ada saat melayang"], ["Lompat", "Tolakan satu kaki"], ["Loncat", "Tolakan dua kaki"]] },
-    { jenis: "urut", n: "Urutan Meloncat", k: "Susun langkahnya", awal: "SIAP", akhir: "SELESAI",
-      langkah: ["Berdiri, kaki selebar bahu", "Tekuk lutut, ayun lengan ke belakang", "Tolak dengan dua kaki bersamaan", "Melayang, lengan ke depan-atas", "Mendarat dua kaki sambil mengeper"] },
-    { jenis: "pasang", n: "Bagian Kaki untuk Menendang", k: "Menendang", judulKiri: "Bagian kaki", judulKanan: "Kegunaan",
-      pasangan: [["Kaki bagian dalam", "Mengoper jarak pendek"], ["Punggung kaki", "Tendangan keras dan jauh"], ["Kaki bagian luar", "Mengoper ke samping"], ["Telapak kaki", "Menghentikan bola"]] },
-    { jenis: "urut", n: "Urutan Masuk Kolam", k: "Aktivitas air", awal: "SEBELUM", akhir: "BERENANG",
-      langkah: ["Pemanasan di tepi kolam", "Mandi bilas", "Masuk kolam dangkal lewat tangga", "Membasahi wajah dan membuat gelembung", "Latihan mengapung bersama guru"] },
+    {"jenis": "pasang", "n": "Gerak dan Cirinya", "k": "Lokomotor", "judulKiri": "Gerak", "judulKanan": "Cirinya", "pasangan": [["Jalan", "Selalu ada satu kaki menapak"], ["Lari", "Ada saat kedua kaki melayang"], ["Lompat", "Tolakan satu kaki"], ["Loncat", "Tolakan dua kaki, mendarat mengeper"]]},
+    {"jenis": "pasang", "n": "Jenis Gerak Dasar", "k": "LKPD 1 · soal acak dari 15", "judulKiri": "Gerakan", "judulKanan": "Jenis gerak", "ambil": 6, "pasangan": [["Berjalan", "Lokomotor (berpindah tempat)"], ["Berlari", "Lokomotor (berpindah tempat)"], ["Melompat", "Lokomotor (berpindah tempat)"], ["Meloncat", "Lokomotor (berpindah tempat)"], ["Berguling", "Lokomotor (berpindah tempat)"], ["Merangkak", "Lokomotor (berpindah tempat)"], ["Membungkuk", "Non-lokomotor (di tempat)"], ["Memutar badan", "Non-lokomotor (di tempat)"], ["Mengayun lengan", "Non-lokomotor (di tempat)"], ["Meregangkan badan", "Non-lokomotor (di tempat)"], ["Melempar bola", "Manipulatif (memainkan benda)"], ["Menangkap bola", "Manipulatif (memainkan benda)"], ["Menendang bola", "Manipulatif (memainkan benda)"], ["Menghentikan bola", "Manipulatif (memainkan benda)"], ["Menggiring bola", "Manipulatif (memainkan benda)"]], "penjelas": "Lokomotor berpindah tempat, non-lokomotor di tempat, manipulatif memainkan benda."},
+    {"jenis": "urut", "n": "Urutkan Langkah Gerak", "k": "LKPD 1–4 · 5 set soal", "awal": "MULAI", "akhir": "SELESAI", "set": [{"n": "Meloncat", "awal": "SIAP", "akhir": "MENDARAT", "langkah": ["Berdiri, kaki selebar bahu", "Tekuk lutut, ayun lengan ke belakang", "Tolak dengan dua kaki bersamaan", "Melayang, lengan ke depan-atas", "Mendarat dua kaki sambil mengeper"]}, {"n": "Melompat", "awal": "SIAP", "akhir": "MENDARAT", "langkah": ["Ambil awalan beberapa langkah", "Tolak dengan satu kaki", "Ayun lengan ke depan-atas", "Mendarat dengan lutut ditekuk"]}, {"n": "Menangkap bola", "awal": "BOLA DATANG", "akhir": "TERTANGKAP", "langkah": ["Mata melihat bola", "Buka kedua tangan seperti mangkuk", "Bola menyentuh telapak tangan", "Tarik bola ke arah badan"]}, {"n": "Menendang bola", "awal": "SIAP", "akhir": "BOLA MELAJU", "langkah": ["Letakkan kaki tumpu di samping bola", "Ayun kaki tendang ke belakang", "Kenai bola dengan kaki bagian dalam", "Mata melihat bola, lalu sasaran"]}, {"n": "Masuk kolam renang", "awal": "SEBELUM", "akhir": "BERENANG", "langkah": ["Pemanasan di tepi kolam", "Mandi bilas", "Masuk kolam dangkal lewat tangga", "Membasahi wajah dan membuat gelembung", "Latihan mengapung bersama guru"]}]},
+    {"jenis": "pasang", "n": "Teknik dan Kegunaannya", "k": "LKPD 2–3 · soal acak dari 9", "judulKiri": "Teknik", "judulKanan": "Kegunaan", "ambil": 5, "pasangan": [["Kaki bagian dalam", "Mengoper jarak pendek"], ["Punggung kaki", "Tendangan keras dan jauh"], ["Kaki bagian luar", "Mengoper ke samping"], ["Telapak kaki", "Menghentikan bola yang menggelinding"], ["Paha", "Menghentikan bola melambung setinggi paha"], ["Dada", "Menghentikan bola melambung tinggi"], ["Lemparan bawah", "Jarak dekat, bola besar"], ["Lemparan atas", "Lemparan jarak jauh"], ["Lemparan samping", "Lengan diayun dari samping badan"]]},
+    {"jenis": "bs", "n": "Benar atau Salah?", "k": "Semua materi · soal acak dari 18", "ambil": 8, "pernyataan": [["Pada lari ada saat kedua kaki melayang.", 1], ["Pada jalan, kedua kaki boleh lepas dari tanah bersamaan.", 0, "Pada jalan selalu ada satu kaki yang menapak."], ["Melompat memakai tolakan satu kaki.", 1], ["Meloncat memakai tolakan satu kaki.", 0, "Meloncat memakai tolakan dua kaki."], ["Saat mendarat, lutut ditekuk supaya tidak cedera.", 1], ["Eksplorasi gerak berarti mencoba berbagai cara bergerak.", 1], ["Melempar dan menangkap termasuk gerak lokomotor.", 0, "Melempar dan menangkap termasuk gerak manipulatif."], ["Lemparan atas cocok untuk jarak jauh.", 1], ["Saat menangkap, mata sebaiknya ditutup.", 0, "Mata harus terus melihat bola."], ["Bola ditarik ke arah badan saat ditangkap.", 1], ["Mengoper jarak pendek paling tepat dengan ujung jari kaki.", 0, "Pakai kaki bagian dalam supaya arah bola tepat."], ["Punggung kaki dipakai untuk tendangan keras dan jauh.", 1], ["Kaki tumpu diletakkan di samping bola.", 1], ["Saat menghentikan bola, kaki dikeraskan menahan bola.", 0, "Kaki ditarik sedikit ke belakang supaya bola mati."], ["Mandi bilas dilakukan sebelum masuk kolam.", 1], ["Berlari di tepi kolam itu aman.", 0, "Tepi kolam licin; berjalanlah pelan."], ["Saat meluncur, lengan lurus menjepit telinga.", 1], ["Boleh berenang sendirian di kolam dalam tanpa guru.", 0, "Selalu didampingi guru atau orang dewasa."]]},
     { jenis: "roda", n: "Roda Tantangan Gerak", k: "Selingan · Pemanasan", atas: "PUTAR RODA!",
       isi: ["Jalan mundur 5 langkah", "Lari di tempat 10 detik", "Lompat satu kaki 5 kali", "Loncat dua kaki 5 kali", "Lempar-tangkap sendiri 5 kali", "Jalan jinjit 5 langkah", "Gerak rendah seperti kepiting", "Patung 5 detik"], catatan: "Lakukan di tempat masing-masing, jaga jarak." },
     { jenis: "rebutan", n: "Kuis Rebutan Tim", k: "Dua tim di depan PID", tim: [["Tim Oranye", "#F05A28"], ["Tim Tosca", "#0FA3A3"]], jumlah: 10, detik: 20 }
@@ -526,7 +530,7 @@ const LENCANA_SEMUA=[
  ['lacak','Detektif Jeli','Menyelesaikan 3 kartu cari kesalahan','🔍'],['gerak','Peniru Gerak','Mempelajari 3 gerakan','🏃'],
  ['urut','Ahli Urutan','Menyusun urutan dengan benar','🔢'],['pasang','Pasangan Tepat','Memasangkan semua dengan benar','🧩'],
  ['label','Penjelajah Lapangan','Menempel semua label dengan benar','📍'],['taktik','Ahli Strategi','Menyimpan taktik di papan','🧠'],
- ['rebutan','Juara Rebutan','Menyelesaikan kuis rebutan','⚡'],['roda','Berani Tantangan','Memutar roda tantangan','🎡'],
+ ['rebutan','Juara Rebutan','Menyelesaikan kuis rebutan','⚡'],['roda','Berani Tantangan','Memutar roda tantangan','🎡'],['bs','Teliti Benar–Salah','Menjawab semua benar atau salah dengan tepat','✅'],
  ['refleksi','Refleksi Jujur','Mengisi tiket keluar','💬']];
 function lencanaAktif(){const J=new Set((D.permainan||[]).map(p=>p.jenis));
   return LENCANA_SEMUA.filter(([id])=>id==='kuis'||id==='kuis100'?ada(D.kuis):id==='lacak'?!!(D.lacak&&ada(D.lacak.kartu)):id==='gerak'?ada(D.gerakan):id==='refleksi'?D.refleksi!==false:J.has(id));}
@@ -1035,19 +1039,20 @@ function gambarDiagram(k){const B='<svg viewBox="0 0 1000 560" preserveAspectRat
   return B+`<rect width="1000" height="560" fill="#3E9B4F"/></svg>`;}
 
 const MAIN=D.permainan||[],AM=$('#arenaMain');
-const NAMA_MAIN={urut:'Urutkan Langkah',pasang:'Pasangkan',label:'Tempel Label',taktik:'Papan Taktik',rebutan:'Kuis Rebutan',roda:'Roda Tantangan'};
+const NAMA_MAIN={urut:'Urutkan Langkah',pasang:'Pasangkan',label:'Tempel Label',taktik:'Papan Taktik',rebutan:'Kuis Rebutan',roda:'Roda Tantangan',bs:'Benar atau Salah'};
 if(D.ketMain)$('#ketMain').innerHTML=D.ketMain;
 MAIN.forEach((g,i)=>{const b=document.createElement('button');b.type='button';b.setAttribute('role','tab');b.dataset.m=i;b.dataset.jenis=g.jenis;b.innerHTML=`<b>${esc(g.n||NAMA_MAIN[g.jenis]||'Permainan')}</b>${esc(g.k||NAMA_MAIN[g.jenis]||'')}`;b.onclick=()=>pilihMain(i);$('#mainPilih').appendChild(b);});
 let mainHenti=()=>{};
 function pilihMain(i){mainHenti();mainHenti=()=>{};document.querySelectorAll('#mainPilih button').forEach(b=>b.setAttribute('aria-selected',+b.dataset.m===i?'true':'false'));
-  const G=MAIN[i],f={urut:mainUrut,pasang:mainPasang,label:mainLabel,taktik:mainTaktik,rebutan:mainRebutan,roda:mainRoda}[G.jenis];
+  const G=MAIN[i],f={urut:mainUrut,pasang:mainPasang,label:mainLabel,taktik:mainTaktik,rebutan:mainRebutan,roda:mainRoda,bs:mainBS}[G.jenis];
   if(f)f(G,i);else AM.innerHTML=`<p class="kecil">Jenis permainan "${esc(G.jenis)}" tidak dikenal.</p>`;}
 const kontrolCek=(p)=>`<div class="baris-kontrol"><button class="tombol" id="${p}Periksa" type="button">Periksa</button><button class="tombol dua" id="${p}Ulang" type="button">Ulangi</button><span class="kecil" id="${p}Info" aria-live="polite"></span></div><div class="penjelas" id="${p}Penjelas"></div>`;
 
 // 1. Urutkan langkah: seret naik-turun atau ketuk dua kartu untuk menukar
-function mainUrut(G){const L=G.langkah||[];let ur,pilih=null,cek=false;
+function pilihSet(G0,daftar){let k=Math.floor(Math.random()*daftar.length);if(daftar.length>1&&k===G0._akhir)k=(k+1)%daftar.length;G0._akhir=k;return daftar[k];}
+function mainUrut(G0){const G=ada(G0.set)?Object.assign({},G0,pilihSet(G0,G0.set)):G0;const L=G.langkah||[];let ur,pilih=null,cek=false;
   const kocok=()=>{ur=acak(L.map((_,i)=>i));let n=0;while(L.length>1&&ur.every((v,i)=>v===i)&&n++<9)ur=acak(ur);};kocok();
-  AM.innerHTML=`<p class="petunjuk-main">${G.petunjuk||'Susun dari langkah pertama sampai terakhir. <b>Seret kartu ke atas atau ke bawah</b>, atau ketuk dua kartu untuk menukar tempatnya.'}</p>
+  AM.innerHTML=`${ada(G0.set)?`<p class="set-soal">Soal: <b>${esc(G.n||'')}</b> · ${G0.set.length} set soal, berganti setiap kali <b>Soal lain</b></p>`:''}<p class="petunjuk-main">${G.petunjuk||'Susun dari langkah pertama sampai terakhir. <b>Seret kartu ke atas atau ke bawah</b>, atau ketuk dua kartu untuk menukar tempatnya.'}</p>
   <div class="program urut-daftar">${G.awal?`<div class="ujung">${esc(G.awal)}</div>`:''}<div id="urIsi" class="urut-isi"></div>${G.akhir?`<div class="ujung">${esc(G.akhir)}</div>`:''}</div>${kontrolCek('ur')}`;
   const isi=$('#urIsi');
   const gambar=()=>{isi.innerHTML='';ur.forEach((k,pos)=>{const b=document.createElement('button');b.type='button';b.className='baris urut'+(G.kode?' kodefont':'')+(cek?(k===pos?' oke':' bug'):'')+(pilih===pos?' dipilih':'');b.dataset.k=k;
@@ -1067,18 +1072,19 @@ function mainUrut(G){const L=G.langkah||[];let ur,pilih=null,cek=false;
   $('#urPeriksa').onclick=()=>{cek=true;pilih=null;const benar=ur.filter((k,p)=>k===p).length;gambar();
     if(benar===L.length){$('#urInfo').textContent=`Hebat! Semua ${L.length} langkah sudah urut.`;bunyi(880,.2);beriLencana('urut');if(G.penjelas)$('#urPenjelas').innerHTML=`<div class="ok"><b>Kenapa urutannya begini?</b> ${G.penjelas}</div>`;}
     else{$('#urInfo').textContent=`${benar} dari ${L.length} langkah sudah di tempat yang benar. Kartu merah belum tepat.`;bunyi(330,.15);}};
-  $('#urUlang').onclick=()=>{kocok();cek=false;pilih=null;$('#urInfo').textContent='';$('#urPenjelas').innerHTML='';gambar();};}
+  if(ada(G0.set)){$('#urUlang').textContent='Soal lain';$('#urUlang').onclick=()=>mainUrut(G0);}
+  else $('#urUlang').onclick=()=>{kocok();cek=false;pilih=null;$('#urInfo').textContent='';$('#urPenjelas').innerHTML='';gambar();};}
 
 // 2. Pasangkan: ketuk kartu kiri lalu kartu kanan (atau seret kartu kanan ke kiri)
-function mainPasang(G){const P=G.pasangan||[];let kanan,jodoh,pK=null,pN=null,cek=false;
+function mainPasang(G0){const bank=G0.pasangan||[],acakBank=G0.ambil&&G0.ambil<bank.length;const G=acakBank?Object.assign({},G0,{pasangan:acak(bank).slice(0,G0.ambil)}):G0;const P=G.pasangan||[];const cocok=(i,j)=>j!==undefined&&P[j]&&P[j][1]===P[i][1];let kanan,jodoh,pK=null,pN=null,cek=false;
   const mulai=()=>{kanan=acak(P.map((_,i)=>i));jodoh={};pK=pN=null;cek=false;};mulai();
-  AM.innerHTML=`<p class="petunjuk-main">${G.petunjuk||'Ketuk satu kartu kiri, lalu kartu kanan yang menjadi pasangannya. Bisa juga <b>menyeret kartu kanan ke kartu kiri</b>.'}</p>
+  AM.innerHTML=`${acakBank?`<p class="set-soal">${P.length} soal diambil acak dari <b>${bank.length}</b> soal · tekan <b>Soal lain</b> untuk soal baru</p>`:''}<p class="petunjuk-main">${G.petunjuk||'Ketuk satu kartu kiri, lalu kartu kanan yang menjadi pasangannya. Bisa juga <b>menyeret kartu kanan ke kartu kiri</b>.'}</p>
   <div class="pasang"><div class="ps-kolom"><h3>${esc(G.judulKiri||'')}</h3><div id="psKiri" class="ps-isi"></div></div><div class="ps-kolom"><h3>${esc(G.judulKanan||'')}</h3><div id="psKanan" class="ps-isi"></div></div></div>${kontrolCek('ps')}`;
   const nomorDari=j=>{const i=Object.keys(jodoh).find(k=>jodoh[k]===j);return i===undefined?null:+i;};
   const pasangkan=(i,j)=>{for(const k in jodoh)if(jodoh[k]===j)delete jodoh[k];jodoh[i]=j;pK=pN=null;cek=false;$('#psInfo').textContent='';$('#psPenjelas').innerHTML='';bunyi(660,.06,.12);gambar();};
   const gambar=()=>{const ki=$('#psKiri'),ka=$('#psKanan');ki.innerHTML='';ka.innerHTML='';
     P.forEach((p,i)=>{const b=document.createElement('button');b.type='button';b.className='ps-kartu ps-kiri';b.dataset.i=i;const j=jodoh[i],w=j!==undefined?WARNA_PASANG[i%10]:'';
-      if(w)b.style.cssText=`border-color:${w};box-shadow:4px 5px 0 ${w}`;if(pK===i)b.classList.add('dipilih');if(cek&&j!==undefined)b.classList.add(j===i?'oke':'bug');
+      if(w)b.style.cssText=`border-color:${w};box-shadow:4px 5px 0 ${w}`;if(pK===i)b.classList.add('dipilih');if(cek&&j!==undefined)b.classList.add(cocok(i,j)?'oke':'bug');
       b.innerHTML=`${w?`<i style="background:${w}">${i+1}</i>`:''}`;b.append(p[0]);b.onclick=()=>{if(pN!==null)pasangkan(i,pN);else{pK=pK===i?null:i;gambar();}};ki.appendChild(b);});
     kanan.forEach(j=>{const b=document.createElement('button');b.type='button';b.className='ps-kartu ps-kanan';b.dataset.j=j;const i=nomorDari(j),w=i!==null?WARNA_PASANG[i%10]:'';
       if(w)b.style.cssText=`border-color:${w};box-shadow:4px 5px 0 ${w}`;if(pN===j)b.classList.add('dipilih');
@@ -1091,10 +1097,25 @@ function mainPasang(G){const P=G.pasangan||[];let kanan,jodoh,pK=null,pN=null,ce
         if(gg){if(t)pasangkan(+t.dataset.i,j);return;}if(pK!==null)pasangkan(pK,j);else{pN=pN===j?null:j;gambar();}});
       b.addEventListener('pointercancel',()=>{m=null;if(h){h.remove();h=null;}});});};
   gambar();
-  $('#psPeriksa').onclick=()=>{cek=true;const n=P.length,benar=P.filter((_,i)=>jodoh[i]===i).length,isi=Object.keys(jodoh).length;gambar();
+  $('#psPeriksa').onclick=()=>{cek=true;const n=P.length,benar=P.filter((_,i)=>cocok(i,jodoh[i])).length,isi=Object.keys(jodoh).length;gambar();
     if(benar===n){$('#psInfo').textContent=`Hebat! Semua ${n} pasangan benar.`;bunyi(880,.2);beriLencana('pasang');if(G.penjelas)$('#psPenjelas').innerHTML=`<div class="ok">${G.penjelas}</div>`;}
     else{$('#psInfo').textContent=`${benar} dari ${n} pasangan benar${isi<n?`, ${n-isi} belum dipasangkan`:''}.`;bunyi(330,.15);}};
-  $('#psUlang').onclick=()=>{mulai();$('#psInfo').textContent='';$('#psPenjelas').innerHTML='';gambar();};}
+  if(acakBank){$('#psUlang').textContent='Soal lain';$('#psUlang').onclick=()=>mainPasang(G0);}
+  else $('#psUlang').onclick=()=>{mulai();$('#psInfo').textContent='';$('#psPenjelas').innerHTML='';gambar();};}
+
+// 2b. Benar atau Salah: pernyataan diambil acak dari bank, ketuk BENAR/SALAH lalu Periksa
+function mainBS(G0){const bank=G0.pernyataan||[],S=acak(bank).slice(0,Math.min(G0.ambil||8,bank.length)),jw={};let cek=false;
+  AM.innerHTML=`<p class="set-soal">${S.length} pernyataan diambil acak dari <b>${bank.length}</b> · tekan <b>Soal lain</b> untuk soal baru</p><p class="petunjuk-main">${G0.petunjuk||'Baca setiap pernyataan, lalu ketuk <b>BENAR</b> atau <b>SALAH</b>. Setelah itu tekan Periksa.'}</p><div id="bsIsi" class="bs-isi"></div>${kontrolCek('bs')}`;
+  const gambar=()=>{const el=$('#bsIsi');el.innerHTML='';S.forEach((s,i)=>{const d=document.createElement('div');d.className='bs-baris'+(cek&&jw[i]!==undefined?(jw[i]===!!s[1]?' oke':' bug'):'');d.dataset.i=i;
+    d.innerHTML=`<span class="nomor">${i+1}</span><span class="bs-teks"></span><span class="bs-tombol"></span>`;d.querySelector('.bs-teks').textContent=s[0];
+    [['BENAR',true],['SALAH',false]].forEach(([t,v])=>{const b=document.createElement('button');b.type='button';b.className='tombol'+(jw[i]===v?'':' dua');b.dataset.v=v?1:0;b.textContent=t;b.setAttribute('aria-pressed',jw[i]===v?'true':'false');
+      b.onclick=()=>{jw[i]=v;cek=false;$('#bsInfo').textContent='';bunyi(660,.06,.12);gambar();};d.querySelector('.bs-tombol').appendChild(b);});
+    if(cek&&jw[i]!==undefined&&jw[i]!==!!s[1]&&s[2]){const p=document.createElement('div');p.className='bs-alasan';p.textContent=s[2];d.appendChild(p);}el.appendChild(d);});};
+  gambar();
+  $('#bsPeriksa').onclick=()=>{cek=true;const benar=S.filter((s,i)=>jw[i]===!!s[1]).length,isi=Object.keys(jw).length;gambar();
+    if(benar===S.length){$('#bsInfo').textContent=`Hebat! Semua ${S.length} jawaban benar.`;bunyi(880,.2);beriLencana('bs');}
+    else{$('#bsInfo').textContent=`${benar} dari ${S.length} benar${isi<S.length?`, ${S.length-isi} belum dijawab`:''}. Baca penjelasan di baris merah.`;bunyi(330,.15);}};
+  $('#bsUlang').textContent='Soal lain';$('#bsUlang').onclick=()=>mainBS(G0);}
 
 // 3. Tempel label pada gambar (lapangan, tubuh, alat): seret nama ke lingkaran bernomor
 function mainLabel(G){const T=G.titik||[];let pos,urutChip,pilih=null,cek=false;
